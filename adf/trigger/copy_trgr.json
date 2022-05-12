@@ -1,0 +1,29 @@
+{
+    "name": "CopyTrigger",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Stopped",
+        "pipeline": {
+            "pipelineReference": {
+                "referenceName": "CopySilverToMongo",
+                "type": "PipelineReference"
+            },
+            "parameters": {
+                "windowStart": "@trigger().outputs.windowStartTime",
+                "windowEnd": "@trigger().outputs.windowEndTime"
+            }
+        },
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "Minute",
+            "interval": 5,
+            "startTime": "<Timestamp>",
+            "delay": "00:00:00",
+            "maxConcurrency": 50,
+            "retryPolicy": {
+                "intervalInSeconds": 30
+            },
+            "dependsOn": []
+        }
+    }
+}

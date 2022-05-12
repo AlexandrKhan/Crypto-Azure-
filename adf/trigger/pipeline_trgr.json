@@ -1,0 +1,24 @@
+{
+    "name": "CryptoTrigger",
+    "properties": {
+        "annotations": [],
+        "runtimeState": "Started",
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "referenceName": "CryptoPipeline",
+                    "type": "PipelineReference"
+                }
+            }
+        ],
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Minute",
+                "interval": 1,
+                "startTime": "<Timestamp>",
+                "timeZone": "UTC"
+            }
+        }
+    }
+}

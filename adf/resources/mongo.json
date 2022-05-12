@@ -1,0 +1,13 @@
+{
+    "name": "Mongo",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "MongoDbAtlas",
+        "typeProperties": {
+            "connectionString": "<Mongo Connection String>",
+            "database": "currency",
+            "encryptedCredential": "<Credentials>"
+        }
+    }
+}

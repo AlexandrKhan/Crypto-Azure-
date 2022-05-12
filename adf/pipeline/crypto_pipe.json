@@ -1,0 +1,111 @@
+{
+    "name": "CryptoTriggerOnce",
+    "properties": {
+        "activities": [
+            {
+                "name": "Mount",
+                "type": "DatabricksNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "<Databricks notebook #1 path>"
+                },
+                "linkedServiceName": {
+                    "referenceName": "Databricks",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Raw-Staged",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Mount",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "<Databricks notebook #3 path>"
+                },
+                "linkedServiceName": {
+                    "referenceName": "Databricks",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "TempGold",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Raw-Staged",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "<Databricks notebook #4 path>"
+                },
+                "linkedServiceName": {
+                    "referenceName": "Databricks",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Gold",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "TempGold",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "7.00:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "<Databricks notebook #5 path>"
+                },
+                "linkedServiceName": {
+                    "referenceName": "Databricks",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2021-11-25T07:37:19Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}

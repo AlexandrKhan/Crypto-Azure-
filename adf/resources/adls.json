@@ -1,0 +1,12 @@
+{
+    "name": "Silver Storage",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://stcrypto201westeurope.dfs.core.windows.net/",
+            "encryptedCredential": "<Credentials>"
+        }
+    }
+}

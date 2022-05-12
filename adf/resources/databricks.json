@@ -1,0 +1,13 @@
+{
+    "name": "Databricks",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureDatabricks",
+        "typeProperties": {
+            "domain": "<Databricks URI>",
+            "existingClusterId": "<Cluster ID>",
+            "encryptedCredential": "<Credentials>"
+        }
+    }
+}
